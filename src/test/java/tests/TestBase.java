@@ -3,7 +3,6 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import drivers.BrowserstackDriver;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -19,38 +18,25 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.browser = new DriverFactory().getDriver();
         Configuration.browserSize = null;
         Configuration.timeout = 30000;
     }
 
     @BeforeEach
     void beforeEach() {
+        Configuration.browser = new DriverFactory().getDriver();
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         open();
     }
 
     @AfterEach
     void addAttachments() {
-        String sessionId = null;
-        try {
-            sessionId = Selenide.sessionId().toString();
-            System.out.println(sessionId);
-        } catch (Exception ignored) {
-        }
+        String sessionId = Selenide.sessionId().toString();
+        System.out.println(sessionId);
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
         closeWebDriver();
-        if (sessionId != null) {
-            try {
-                Attach.addVideo(sessionId);
-            } catch (Exception ignored) {
-            }
-        }
-        else
-        {
-            Attach.screenshot();
-            Attach.pageSource();
-            closeWebDriver();
-        }
+        Attach.addVideo(sessionId);
     }
 }
 
