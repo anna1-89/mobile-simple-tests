@@ -1,0 +1,9 @@
+/.idea
+/.gradle
+/gradle
+/build
+../mobile-tests/gradlew
+gradlew.bat
+gradlew
+/notifications/draft.txt
+/notifications/config.json
