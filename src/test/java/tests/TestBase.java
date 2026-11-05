@@ -10,6 +10,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
+import drivers.DriverFactory;
+
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -17,7 +19,7 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.browser = BrowserstackDriver.class.getName();
+        Configuration.browser = new DriverFactory().getDriver();
         Configuration.browserSize = null;
         Configuration.timeout = 30000;
     }
@@ -30,22 +32,26 @@ public class TestBase {
 
     @AfterEach
     void addAttachments() {
-        String sessionId = Selenide.sessionId().toString();
+        String sessionId = null;
         try {
             sessionId = Selenide.sessionId().toString();
-            Attach.pageSource();
-        } catch (RuntimeException error) {
-            Attach.attachAsText("Ошибка получения вложений", error.toString());
-        } finally {
-            closeWebDriver();
+            System.out.println(sessionId);
+        } catch (Exception ignored) {
         }
-        if (sessionId != null && BrowserstackDriver.class.getName().equals(Configuration.browser)) {
+        closeWebDriver();
+        if (sessionId != null) {
             try {
                 Attach.addVideo(sessionId);
-            } catch (RuntimeException error) {
-                Attach.attachAsText("Ошибка получения видео", error.toString());
+            } catch (Exception ignored) {
             }
+        }
+        else
+        {
+            Attach.screenshot();
+            Attach.pageSource();
+            closeWebDriver();
         }
     }
 }
+
 
