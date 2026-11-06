@@ -3,7 +3,7 @@ package config;
 import org.aeonbits.owner.Config;
 import org.aeonbits.owner.Config.Sources;
 
-@Sources("classpath:BrowserstackConfig.properties")
+@Sources("classpath:config.properties")
 public interface BrowserstackConfig extends Config{
 
     @Key("browserstackUrl") String browserstackUrl();
