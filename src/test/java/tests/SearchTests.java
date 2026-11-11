@@ -20,4 +20,14 @@ public class SearchTests extends TestBase{
                         .shouldHave(sizeGreaterThan(0)));
     }
 
+    @Test
+    void successfulSearchArticleTest() {
+        welcomeScreen.skipOnBoarding();
+        mainScreen.clickOnSearchButton();
+        searchScreen.closeWidget()
+                .clickOnSearchField()
+                .typeSearchQuery("Android")
+                .articlesListIsNotEmpty();
+    }
+
 }
