@@ -56,7 +56,7 @@ ____
 
 ____
 <a id="jenkins"></a>
-## <img alt="Jenkins" height="25" src="images/logo/Jenkins.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.qa.guru/view/java_students/job/42_annap_wikimedia_mobile_tests/)</a>
+## <img alt="Jenkins" height="25" src="images/logo/Jenkins.svg" width="25"/></a> <a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.qa.guru/view/java_students/job/42_annap_wikimedia_mobile_tests/)</a>
 
 <a id="console"></a>
 ### Команды для запуска из терминала
@@ -80,7 +80,7 @@ bash  clean test
 ___
 
 <a id="browserstack"></a>
-## <img alt="BrowserStack" height="25" src="images/logo/BrowserStack.png" width="25"/></a><a name="BrowserStack"></a>Интеграция с [BrowserStack] (https://app-automate.browserstack.com/overview)</a>
+## <img alt="BrowserStack" height="25" src="images/logo/BrowserStack.png" width="25"/></a> <a name="BrowserStack.png"></a>Интеграция с  [BrowserStack](https://app-automate.browserstack.com/overview)</a>
 
 BrowserStack — это облачная платформа для тестирования веб-сайтов и мобильных приложений на реальных устройствах, браузерах и операционных системах.
 
