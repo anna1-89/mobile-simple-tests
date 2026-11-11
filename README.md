@@ -154,7 +154,7 @@ Allure Report — это популярный инструмент с откры
 ___
 
 <a id="allure-testops"></a>
-## <img alt="Allure" height="25" src="images/logo/Allure2.svg" width="25"/></a>Интеграция с <a target="_blank" https://allure.qa.guru/project/5431/launches">Allure TestOps</a>
+## <img alt="TestOps" height="25" src="images/logo/Allure2.svg" width="25"/></a><a name="TestOps"></a>Интеграция с [TestOps](https://allure.qa.guru/project/5431/launches)</a>
 TestOps Тестирование + Операции) — это методология и практика управления, автоматизации и масштабирования процессов тестирования в разработке ПО по аналогии с тем, как DevOps объединяет разработку и эксплуатацию.
 
 
