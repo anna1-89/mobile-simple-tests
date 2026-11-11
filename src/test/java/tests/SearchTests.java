@@ -1,33 +1,41 @@
 package tests;
 
+import io.qameta.allure.Story;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Selenide.*;
-import static io.appium.java_client.AppiumBy.*;
 import static io.qameta.allure.Allure.step;
 
+@Story("Функционал поиска статей")
 public class SearchTests extends TestBase{
 
+    public static String searchedArticleName = "Android";
+
     @Test
-    void successfulSearchTest() {
-        step("Type search", () -> {
-            $(accessibilityId("Search Wikipedia")).click();
-            $(id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Appium");
+    @DisplayName("Успешный поиск статьи wiki")
+    void successfulSearchArticleTest() {
+        welcomeScreen.passWelcomeScreens();
+        step("Переходим на вкладку \"Поиск\" и вводим запрос на поиск", () -> {
+            mainScreen.clickSearchTab();
+            searchScreen.closeWidget();
+            searchScreen.clickOnSearchField();
+            searchScreen.setSearchValue(searchedArticleName);
         });
-        step("Verify content found", () ->
-                $$(id("org.wikipedia.alpha:id/page_list_item_title"))
-                        .shouldHave(sizeGreaterThan(0)));
+        searchScreen.checkArticlesListIsNotEmpty();
     }
 
     @Test
-    void successfulSearchArticleTest() {
-        welcomeScreen.skipOnBoarding();
-        mainScreen.clickOnSearchButton();
-        searchScreen.closeWidget()
-                .clickOnSearchField()
-                .typeSearchQuery("Android")
-                .articlesListIsNotEmpty();
+    @DisplayName("Открытие найденной статьи на просмотр")
+    void successfulViewArticleTest() {
+        welcomeScreen.passWelcomeScreens();
+        step("Переходим на вкладку \"Поиск\" и вводим запрос на поиск", () -> {
+            mainScreen.clickSearchTab();
+            searchScreen.closeWidget();
+            searchScreen.clickOnSearchField();
+            searchScreen.setSearchValue(searchedArticleName);
+        });
+        searchScreen.openArticle(searchedArticleName);
+        articleScreen.checkRightArticleIsOpen(searchedArticleName);
     }
 
 }

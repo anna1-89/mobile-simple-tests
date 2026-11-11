@@ -9,18 +9,21 @@ import static io.appium.java_client.AppiumBy.accessibilityId;
 
 public class MainScreen {
 
-    private static final SelenideElement homePageButton = $(accessibilityId("Home"));
-    private static final SelenideElement searchButton = $(accessibilityId("Search"));
+    //Elements
+    private static final SelenideElement mainButton = $(accessibilityId("Home"));
+    private static final SelenideElement searchTab = $(accessibilityId("Search"));
 
-    @Step("Проверка что мы на главное старнице")
-    public MainScreen checkHomeScreenIsOpen() {
-        homePageButton.shouldBe(Condition.selected);
+    //Actions
+    @Step("Нажимаем на вкладку \"Поиск\" в основном меню")
+    public MainScreen clickSearchTab() {
+        searchTab.click();
         return this;
     }
 
-    @Step("Переход на экран поиска")
-    public MainScreen clickOnSearchButton() {
-        searchButton.click();
+    //Asserts
+    @Step("Проверям, что находимся на главном экране приложения")
+    public MainScreen checkMainScreenIsOpen() {
+        mainButton.shouldBe(Condition.selected);
         return this;
     }
 

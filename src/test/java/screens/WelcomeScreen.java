@@ -8,43 +8,46 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.appium.java_client.AppiumBy.accessibilityId;
 
 public class WelcomeScreen {
-    private static final SelenideElement firstOnBoardPage = $(accessibilityId("Wikipedia"));
-    private static final SelenideElement secondOnBoardPage = $(accessibilityId("Data & Privacy"));
-    private static final SelenideElement thirdOnBoardPage = $(accessibilityId("Read in more than 300 languages"));
-    private static final SelenideElement fourthOnBoardPage = $(accessibilityId("Follow your curiosity"));
+
+    //Elements
+    private static final SelenideElement firstWelcomeScreen = $(accessibilityId("Wikipedia"));
+    private static final SelenideElement secondWelcomeScreen = $(accessibilityId("Data & Privacy"));
+    private static final SelenideElement thirdWelcomeScreen = $(accessibilityId("Read in more than 300 languages"));
+    private static final SelenideElement fourthWelcomeScreen = $(accessibilityId("Follow your curiosity"));
     private static final SelenideElement forwardButton = $(accessibilityId("Forward"));
     private static final SelenideElement skipButton = $x("//android.widget.TextView[@text=\"Skip\"]\n");
 
-    @Step("Прохождение страницы \"All the world's knowledge\"")
-    public WelcomeScreen skipFirstOnBoardPage() {
-        firstOnBoardPage.shouldBe(Condition.visible);
+    //Actions
+    @Step("Нажимаем на \"Далее\" в первом Welcome скрине \"All the world's knowledge\"")
+    public WelcomeScreen passFirstWelcomeScreen() {
+        firstWelcomeScreen.shouldBe(Condition.visible);
         forwardButton.click();
         return this;
     }
 
-    @Step("Прохождение страницы \"Data and Privacy\"")
-    public WelcomeScreen skipSecondOnBoardPage() {
-        secondOnBoardPage.shouldBe(Condition.visible);
+    @Step("Нажимаем на \"Далее\" во втором Welcome скрине \"Data and Privacy\"")
+    public WelcomeScreen passSecondWelcomeScreen() {
+        secondWelcomeScreen.shouldBe(Condition.visible);
         forwardButton.click();
         return this;
     }
 
-    @Step("Прохождение страницы \"Read in more than 300 languages\"")
-    public WelcomeScreen skipThirdOnBoardPage() {
-        thirdOnBoardPage.shouldBe(Condition.visible);
+    @Step("Нажимаем на \"Далее\" в третьем Welcome скрине \"Read in more than 300 languages\"")
+    public WelcomeScreen passThirdWelcomeScreen() {
+        thirdWelcomeScreen.shouldBe(Condition.visible);
         forwardButton.click();
         return this;
     }
 
-    @Step("Прохождение страницы \"Follow your curiosity\"")
-    public WelcomeScreen skipFourthOnBoardPage() {
-        fourthOnBoardPage.shouldBe(Condition.visible);
+    @Step("Нажимаем на \"Пропустить\" в последнем Welcome скрине \"Follow your curiosity\"")
+    public WelcomeScreen passFourthWelcomeScreen() {
+        fourthWelcomeScreen.shouldBe(Condition.visible);
         skipButton.click();
         return this;
     }
 
-    @Step("Нажимаем кноку \"Назад\" на телефоне")
-    public WelcomeScreen skipOnBoarding() {
+    @Step("Открываем главное окно приложения")
+    public WelcomeScreen passWelcomeScreens() {
         back();
         return this;
     }

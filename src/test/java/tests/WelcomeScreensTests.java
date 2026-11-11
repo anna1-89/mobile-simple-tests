@@ -3,16 +3,20 @@ package tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static io.qameta.allure.Allure.step;
+
 public class WelcomeScreensTests extends TestBase {
 
     @Test
-    @DisplayName("Прохождение начальных экранов")
-    void navigateOnBoardScreenTest() {
-        welcomeScreen.skipFirstOnBoardPage()
-                .skipSecondOnBoardPage()
-                .skipThirdOnBoardPage()
-                .skipFourthOnBoardPage();
-        mainScreen.checkHomeScreenIsOpen();
+    @DisplayName("Шаги прохождения welcome скринов приложения при первом запуске приложения")
+    void passWelcomeScreensTest() {
+        step("Проходим welcome скрины приложения при первоми запуске приложения", () -> {
+            welcomeScreen.passFirstWelcomeScreen();
+            welcomeScreen.passSecondWelcomeScreen();
+            welcomeScreen.passThirdWelcomeScreen();
+            welcomeScreen.passFourthWelcomeScreen();
+        });
+        mainScreen.checkMainScreenIsOpen();
     }
 
 }

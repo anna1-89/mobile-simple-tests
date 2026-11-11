@@ -7,9 +7,12 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ConfirmWindow {
 
+    //Elements
     private static final SelenideElement confirmButton = $("[text=\"Yes\"]");
 
-    @Step("Нажимаем на кнопку \"Да\" в открывшемся окне")
+    //Actions
+
+    @Step("Нажимаем на кнопку \"Да\" в всплывающем окне")
     public void pressConfirm() {
         confirmButton.click();
     }

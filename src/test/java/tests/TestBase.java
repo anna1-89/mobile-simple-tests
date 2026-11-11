@@ -10,25 +10,18 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 import drivers.DriverFactory;
-import screens.MainScreen;
-import screens.SearchScreen;
-import screens.WelcomeScreen;
+import screens.*;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
-
-import static io.appium.java_client.AppiumBy.id;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.Wait;
-import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class TestBase {
 
     WelcomeScreen welcomeScreen = new WelcomeScreen();
     MainScreen mainScreen = new MainScreen();
     SearchScreen searchScreen = new SearchScreen();
+    ArticleScreen articleScreen = new ArticleScreen();
+    SavedArticlesScreen savedArticles = new SavedArticlesScreen();
 
     @BeforeAll
     static void beforeAll() {
